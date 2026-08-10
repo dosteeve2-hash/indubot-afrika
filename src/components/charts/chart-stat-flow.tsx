@@ -38,14 +38,13 @@ function formatStatValue(
 }
 
 function useNumberFlowElementReady(): boolean {
-  const [ready, setReady] = useState(
-    () =>
-      typeof customElements !== "undefined" &&
-      Boolean(customElements.get("number-flow-react"))
-  );
+  // Starts `false` on both server and the client's first (pre-hydration) render —
+  // reading `customElements` in the useState initializer would flip this early on
+  // the client only, causing a hydration mismatch against the server's static text.
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (ready) {
+    if (typeof customElements === "undefined") {
       return;
     }
     let cancelled = false;
@@ -57,7 +56,7 @@ function useNumberFlowElementReady(): boolean {
     return () => {
       cancelled = true;
     };
-  }, [ready]);
+  }, []);
 
   return ready;
 }
