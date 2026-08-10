@@ -20,6 +20,7 @@
     "@visx/responsive": "^4.0.1-alpha.0",
     "@visx/scale": "^4.0.1-alpha.0",
     "@visx/shape": "^4.0.1-alpha.0",
+    "@visx/tooltip": "^4.0.0",
     "better-auth": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -27,7 +28,7 @@
     "d3-shape": "^3.2.0",
     "lucide-react": "^0.475.0",
     "motion": "^12.4.10",
-    "next": "15.5.23",
+    "next": "^16.3.0",
     "radix-ui": "^1.6.7",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -39,7 +40,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.23",
+    "eslint-config-next": "^16.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
