@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --navy: #0a1628;
+  --navy-2: #0f2038;
+  --navy-3: #142a47;
+  --gold: #d4af37;
+  --gold-2: #e8c968;
+  --gold-3: #a8842a;
+  --cyan: #00bcd4;
+  --cyan-2: #4dd8e8;
+  --text: #f5f0e8;
+  --text-2: #9bacc4;
+  --text-3: #4e6482;
+  --border: #16233d;
+  --border-2: #1f3054;
+  --green: #22d98a;
+  --red: #ef4444;
+
+  --background: var(--navy);
+  --foreground: var(--text);
+
+  /* Bklit chart tokens, mapped to the Forge Afrika palette */
+  --chart-1: var(--gold);
+  --chart-2: var(--cyan);
+  --chart-3: var(--green);
+  --chart-4: var(--gold-2);
+  --chart-5: var(--cyan-2);
+  --chart-background: var(--navy-2);
+  --chart-foreground: var(--text);
+  --chart-foreground-muted: var(--text-2);
+  --chart-line-primary: var(--gold);
+  --chart-line-secondary: var(--cyan);
+  --chart-crosshair: var(--gold);
+  --chart-grid: var(--border);
+  --chart-brush-border: var(--border-2);
+  --chart-tooltip-background: var(--navy-3);
+  --chart-tooltip-foreground: var(--text);
+  --chart-tooltip-muted: var(--text-2);
+  --chart-marker-background: var(--navy-2);
+  --chart-marker-border: var(--gold);
+  --chart-marker-foreground: var(--text);
+  --chart-label: var(--text-2);
+  --chart-scale-01: #142a47;
+  --chart-scale-02: #1c3a63;
+  --chart-scale-03: #2a5488;
+  --chart-scale-04: #3d78b8;
+  --chart-scale-05: #d4af37;
+  --chart-scale-pattern-color: var(--navy-3);
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-navy-3: var(--navy-3);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-gold-3: var(--gold-3);
+  --color-cyan: var(--cyan);
+  --color-cyan-2: var(--cyan-2);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-border: var(--border);
+  --color-border-2: var(--border-2);
+  --color-green: var(--green);
+  --color-red: var(--red);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-outfit);
+  --font-mono: var(--font-jetbrains);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-background: var(--chart-background);
+  --color-chart-foreground: var(--chart-foreground);
+  --color-chart-foreground-muted: var(--chart-foreground-muted);
+  --chart-line-primary: var(--chart-line-primary);
+  --chart-line-secondary: var(--chart-line-secondary);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --color-chart-grid: var(--chart-grid);
+  --chart-brush-border: var(--chart-brush-border);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+  --color-chart-marker-background: var(--chart-marker-background);
+  --color-chart-marker-border: var(--chart-marker-border);
+  --color-chart-marker-foreground: var(--chart-marker-foreground);
+  --color-chart-label: var(--chart-label);
+  --color-chart-scale-01: var(--chart-scale-01);
+  --color-chart-scale-02: var(--chart-scale-02);
+  --color-chart-scale-03: var(--chart-scale-03);
+  --color-chart-scale-04: var(--chart-scale-04);
+  --color-chart-scale-05: var(--chart-scale-05);
+  --color-chart-scale-pattern-color: var(--chart-scale-pattern-color);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+}
