@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Outfit, JetBrains_Mono } from "next/font/google";
+import GoogleAnalytics from "@/components/analytics/google-analytics";
+import StickyMobileCta from "@/components/layout/sticky-mobile-cta";
+import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -22,9 +25,43 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Indubot Afrika — Gestion Industrielle Intelligente",
-  description:
-    "Indubot Afrika est le logiciel de gestion automatique d'industries de l'écosystème Forge Afrika : production, machines, alertes et rapports en temps réel.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "Indubot Afrika — Gestion Industrielle Intelligente",
+    template: "%s",
+  },
+  description: siteConfig.description,
+  openGraph: {
+    title: "Indubot Afrika — Gestion Industrielle Intelligente",
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Indubot Afrika — Gestion Industrielle Intelligente",
+    description: siteConfig.description,
+  },
+};
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  telephone: siteConfig.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.locality,
+    addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: siteConfig.address.country,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -33,8 +70,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="fr"
       className={`${playfair.variable} ${outfit.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          type="application/ld+json"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-navy font-sans text-text">
         {children}
+        <StickyMobileCta />
+        <GoogleAnalytics />
       </body>
     </html>
   );

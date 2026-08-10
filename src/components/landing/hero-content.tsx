@@ -58,13 +58,13 @@ export default function HeroContent() {
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
         </Link>
-        <button
+        <a
           className="inline-flex h-12 items-center gap-2 rounded-lg border border-border-2 px-6 font-mono text-sm text-text-2 transition-colors hover:border-cyan hover:text-cyan"
-          type="button"
+          href="#case-study"
         >
           <PlayCircle className="h-4 w-4" />
           Voir la démo
-        </button>
+        </a>
       </motion.div>
     </motion.div>
   );

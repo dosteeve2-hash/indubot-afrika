@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AlertsTable from "@/components/dashboard/alerts-table";
 import DashboardHeader from "@/components/dashboard/header";
 import KpiCard from "@/components/dashboard/kpi-card";
@@ -5,14 +6,24 @@ import Sidebar from "@/components/dashboard/sidebar";
 import EnergieAreaChart from "@/components/charts/energie-area-chart";
 import MachinesRingChart from "@/components/charts/machines-ring-chart";
 import ProductionLineChart from "@/components/charts/production-line-chart";
+import Breadcrumbs from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { alertes, kpis } from "@/lib/indubot";
+
+export const metadata: Metadata = {
+  title: "Tableau de bord | Indubot Afrika",
+  description:
+    "Suivez en temps réel la production, l'utilisation des machines et les alertes de votre usine sur le tableau de bord Indubot Afrika.",
+  openGraph: { images: ["/opengraph-image"] },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"] },
+};
 
 export default function DashboardPage() {
   return (
     <div className="flex min-h-screen bg-navy">
       <Sidebar />
       <div className="flex flex-1 flex-col">
+        <Breadcrumbs items={[{ label: "Tableau de bord", href: "/dashboard" }]} />
         <DashboardHeader />
 
         <main className="flex flex-1 flex-col gap-6 px-6 py-8 md:px-10">

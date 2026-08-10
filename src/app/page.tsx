@@ -5,6 +5,11 @@ import BeamsBackground from "@/components/kokonut/beams-background";
 import HeroContent from "@/components/landing/hero-content";
 import FeatureGrid from "@/components/landing/feature-grid";
 import KpiPreview from "@/components/landing/kpi-preview";
+import CaseStudySection from "@/components/landing/case-study-section";
+import TestimonialsSection from "@/components/landing/testimonials-section";
+import TeamSection from "@/components/landing/team-section";
+import FaqSection from "@/components/landing/faq-section";
+import ContactSection from "@/components/landing/contact-section";
 import CtaSection from "@/components/landing/cta-section";
 
 export default function Home() {
@@ -51,6 +56,16 @@ export default function Home() {
 
       <KpiPreview />
 
+      <CaseStudySection />
+
+      <TestimonialsSection />
+
+      <TeamSection />
+
+      <FaqSection />
+
+      <ContactSection />
+
       <CtaSection />
 
       <footer className="border-t border-border px-6 py-10">
@@ -61,13 +76,21 @@ export default function Home() {
           <p className="font-mono text-xs text-text-3">
             Écosystème Forge Afrika — 2026
           </p>
-          <Link
-            className="inline-flex items-center gap-1 font-mono text-xs text-text-2 transition-colors hover:text-gold"
-            href="/dashboard"
-          >
-            Accéder au tableau de bord
-            <ArrowRight className="h-3 w-3" />
-          </Link>
+          <div className="flex items-center gap-4 font-mono text-xs text-text-2">
+            <Link
+              className="transition-colors hover:text-gold"
+              href="/politique-confidentialite"
+            >
+              Confidentialité
+            </Link>
+            <Link
+              className="inline-flex items-center gap-1 transition-colors hover:text-gold"
+              href="/dashboard"
+            >
+              Accéder au tableau de bord
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
