@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint & build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+        env:
+          # Valeur factice : Better Auth exige que la variable soit définie,
+          # sinon il journalise une erreur à chaque build. La CI ne déploie
+          # rien — le vrai secret vit dans Vercel.
+          BETTER_AUTH_SECRET: ci-placeholder-not-a-real-secret
+          NEXT_TELEMETRY_DISABLED: "1"
