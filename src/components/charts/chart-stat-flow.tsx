@@ -3,39 +3,16 @@
 import NumberFlow from "@number-flow/react";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
+import { formatStatValue, defaultChartStatFlowFormat } from "@/lib/format-stat";
+import type { ChartStatFlowFormat } from "@/lib/format-stat";
 
-/** Subset of `Intl.NumberFormatOptions` supported by NumberFlow */
-export interface ChartStatFlowFormat {
-  notation?: "standard" | "compact";
-  compactDisplay?: "short" | "long";
-  minimumFractionDigits?: number;
-  maximumFractionDigits?: number;
-  minimumIntegerDigits?: number;
-  minimumSignificantDigits?: number;
-  maximumSignificantDigits?: number;
-  style?: "decimal" | "percent" | "currency";
-  currency?: string;
-  currencyDisplay?: "symbol" | "narrowSymbol" | "code" | "name";
-  unit?: string;
-  unitDisplay?: "short" | "long" | "narrow";
-}
+// Reexportes pour que les composants qui les importaient d'ici continuent de marcher.
+export { defaultChartStatFlowFormat };
+export type { ChartStatFlowFormat };
 
-export const defaultChartStatFlowFormat: ChartStatFlowFormat = {
-  notation: "standard",
-  maximumFractionDigits: 0,
-};
 
-function formatStatValue(
-  value: number,
-  formatOptions: ChartStatFlowFormat,
-  prefix?: string,
-  suffix?: string
-): string {
-  const formatted = new Intl.NumberFormat(undefined, formatOptions).format(
-    value
-  );
-  return `${prefix ?? ""}${formatted}${suffix ?? ""}`;
-}
+
+
 
 function useNumberFlowElementReady(): boolean {
   // Starts `false` on both server and the client's first (pre-hydration) render —
