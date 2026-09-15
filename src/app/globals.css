@@ -139,3 +139,31 @@ body {
     height: 0;
   }
 }
+
+/*
+  ───────── Mouvement réduit ─────────
+  Quarante-et-un fichiers de ce dépôt animent avec `motion`, et CINQ seulement
+  consultent `useReducedMotion`. L'intention était donc là — elle n'était appliquée
+  que dans un fichier sur huit.
+
+  Cette page est chargée en graphiques animés, en fonds de faisceaux et en textes
+  scintillants. Pour une personne sujette au vertige vestibulaire, ce n'est pas une
+  finition : c'est un motif de fermer l'onglet.
+
+  Une règle CSS couvre les quarante-et-un fichiers d'un coup, sans les réécrire, et
+  rattrape aussi ce qu'un `useReducedMotion` oublié laisserait passer demain.
+
+  Les durées sont ramenées à un battement plutôt que supprimées : un composant qui
+  attend un `animationend` ou un `transitionend` doit le recevoir quand même, sans
+  quoi il reste bloqué dans son état de chargement.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

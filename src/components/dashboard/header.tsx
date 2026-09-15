@@ -1,15 +1,12 @@
 "use client";
 
+import { dateUsine } from "@/lib/date-usine";
+
 export default function DashboardHeader() {
-  const today = new Date().toLocaleDateString("fr-FR", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const today = dateUsine();
 
   return (
-    <header className="flex flex-col gap-1 border-b border-border px-6 py-6 md:flex-row md:items-center md:justify-between md:px-10">
+    <header className="flex flex-col gap-1 border-b border-border py-6 pl-16 pr-6 md:flex-row md:items-center md:justify-between md:pr-10 lg:pl-10">
       <div>
         <h1 className="font-serif text-2xl italic text-text md:text-3xl">
           Tableau de bord industriel

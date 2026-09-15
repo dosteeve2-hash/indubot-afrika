@@ -28,6 +28,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Date — stable quel que soit le fuseau
+        run: npm run check:date
+
       - name: Build
         run: npm run build
         env:
