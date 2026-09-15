@@ -28,6 +28,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Vérifier le respect du mouvement réduit
+        run: npm run check:mouvement
+
       - name: Build
         run: npm run build
         env:

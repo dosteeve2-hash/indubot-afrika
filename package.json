@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:mouvement": "node scripts/check-mouvement.mjs"
   },
   "dependencies": {
     "@number-flow/react": "^0.6.2",
