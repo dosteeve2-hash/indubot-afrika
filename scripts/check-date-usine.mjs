@@ -81,11 +81,34 @@ if (new Set(sans).size === 1) {
 }
 
 // 3. Le code ne doit pas contenir de mise en forme de date sans fuseau explicite.
+/**
+ * `git ls-files` seul ne liste que les fichiers SUIVIS. Un fichier tout juste créé et
+ * pas encore ajouté à l'index y est invisible — ce qui a exactement caché cette panne :
+ * en local le contrôle passait parce que `src/lib/date-usine.ts` n'était pas encore
+ * suivi, et la CI l'a vue une fois le commit fait. `--others --exclude-standard` ajoute
+ * les fichiers non suivis et non ignorés, pour que le local dise la même chose que la CI.
+ */
+function fichiersSources() {
+  const sortie = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', 'src'],
+    { cwd: racine, encoding: 'utf8' })
+  return [...new Set(sortie.trim().split('\n'))].filter((f) => /\.(ts|tsx)$/.test(f))
+}
+
+/**
+ * Retire commentaires de bloc et de ligne avant de chercher.
+ *
+ * Sans cela, le contrôle se déclenchait sur la DOCUMENTATION de `date-usine.ts`, qui
+ * montre exprès l'ancien appel fautif en exemple. Un garde-fou qui interdit de décrire
+ * le défaut qu'il corrige rend le code moins lisible, pas plus sûr.
+ */
+function sansCommentaires(txt) {
+  return txt.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^[ \t]*\/\/.*$/gm, '')
+}
+
 const coupables = []
-for (const f of execFileSync('git', ['ls-files', 'src'], { cwd: racine, encoding: 'utf8' }).trim().split('\n')) {
-  if (!/\.(ts|tsx)$/.test(f)) continue
-  const txt = readFileSync(join(racine, f), 'utf8')
-  for (const appel of txt.match(/toLocaleDateString\([\s\S]{0,220}?\)/g) ?? []) {
+for (const f of fichiersSources()) {
+  const txt = sansCommentaires(readFileSync(join(racine, f), 'utf8'))
+  for (const appel of txt.match(/toLocaleDateString\([\s\S]{0,220}?\}\s*\)/g) ?? []) {
     if (!appel.includes('timeZone')) coupables.push(`${f} → ${appel.replace(/\s+/g, ' ').slice(0, 80)}…`)
   }
 }
