@@ -12,6 +12,10 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
+// Seule « Vue d'ensemble » existe. Les autres modules étaient des boutons sans
+// gestionnaire : cliquer dessus ne produisait rien, sans que rien ne l'indique.
+// Ils restent affichés — ils disent où va le produit — mais sont désactivés et
+// l'annoncent.
 const modules = [
   { label: "Vue d'ensemble", icon: LayoutDashboard, active: true },
   { label: "Production", icon: Factory, active: false },
@@ -32,6 +36,12 @@ function Marque() {
 }
 
 function Modules({ onNavigate }: { onNavigate?: () => void }) {
+  // Deux choses se rejoignent ici. Le tiroir mobile a besoin que la liste des modules
+  // soit un composant partagé, pour que la barre latérale et le tiroir rendent la
+  // MÊME liste. Et la #2 a établi que quatre des cinq modules ne sont pas implémentés :
+  // les désactiver avec un badge « Bientôt » évite de promettre ce qui n'existe pas.
+  // Le faire ici plutôt que dans la barre latérale seule, c'est le dire aussi sur
+  // téléphone — sinon le tiroir aurait offert cinq modules dont quatre muets.
   return (
     <>
       {modules.map((mod) => (
@@ -41,14 +51,21 @@ function Modules({ onNavigate }: { onNavigate?: () => void }) {
             "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors motion-reduce:transition-none",
             mod.active
               ? "bg-gold/10 text-gold"
-              : "text-text-2 hover:bg-navy-3 hover:text-text"
+              : "cursor-not-allowed text-text-3"
           )}
+          disabled={!mod.active}
           key={mod.label}
-          onClick={onNavigate}
+          onClick={mod.active ? onNavigate : undefined}
+          title={mod.active ? undefined : "Module à venir"}
           type="button"
         >
           <mod.icon className="h-4 w-4" />
           {mod.label}
+          {!mod.active && (
+            <span className="ml-auto rounded-full bg-text-3/10 px-1.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider text-text-3">
+              Bientôt
+            </span>
+          )}
         </button>
       ))}
     </>
