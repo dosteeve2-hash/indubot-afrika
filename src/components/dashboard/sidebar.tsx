@@ -9,6 +9,10 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Seule « Vue d'ensemble » existe. Les autres modules étaient des boutons sans
+// gestionnaire : cliquer dessus ne produisait rien, sans que rien ne l'indique.
+// Ils restent affichés — ils disent où va le produit — mais sont désactivés et
+// l'annoncent.
 const modules = [
   { label: "Vue d'ensemble", icon: LayoutDashboard, active: true },
   { label: "Production", icon: Factory, active: false },
@@ -33,13 +37,20 @@ export default function Sidebar() {
               "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
               mod.active
                 ? "bg-gold/10 text-gold"
-                : "text-text-2 hover:bg-navy-3 hover:text-text"
+                : "cursor-not-allowed text-text-3"
             )}
+            disabled={!mod.active}
             key={mod.label}
+            title={mod.active ? undefined : "Module à venir"}
             type="button"
           >
             <mod.icon className="h-4 w-4" />
             {mod.label}
+            {!mod.active && (
+              <span className="ml-auto rounded-full bg-text-3/10 px-1.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider text-text-3">
+                Bientôt
+              </span>
+            )}
           </button>
         ))}
       </nav>
