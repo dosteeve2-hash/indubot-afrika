@@ -88,15 +88,43 @@ for (const fichier of fichiersSources()) {
   const code = sansCommentaires(readFileSync(fichier, "utf8"));
   if (!boucleAnimation(code)) continue;
 
-  const consulte =
-    /from\s+["'](@\/lib\/mouvement|\.{1,2}\/[^"']*\/?mouvement)["']/.test(code) ||
-    /useReducedMotion/.test(code);
+  // `useReducedMotion` ne suffit PAS ici, et c'est une correction de ce script.
+  //
+  // Le 16 septembre, un sabotage de contrôle a retiré `mouvementReduit()` de
+  // beams-background.tsx — le verrou de la boucle — et ce script est resté VERT :
+  // le fichier importe aussi `useReducedMotion` pour la pulsation d'opacité de la
+  // surcouche, ce qui suffisait à l'ancienne condition. La boucle pouvait donc
+  // perdre son verrou sans un seul rouge. Un garde qui ne rougit pas quand ce
+  // qu'il protège disparaît ne protège rien.
+  //
+  // La raison de fond : `useReducedMotion` est un hook React, lu pendant le rendu.
+  // Une boucle requestAnimationFrame tourne HORS du cycle de rendu et doit être
+  // arrêtée impérativement — c'est ce que fait `mouvementReduit()`. Un fichier qui
+  // anime en déclaratif avec Motion ne fait pas tourner de boucle brute, donc cette
+  // exigence ne le concerne jamais.
+  // On exige un APPEL, pas un import.
+  //
+  // Deux sabotages du 16 septembre sont passés verts avant d'arriver à cette ligne.
+  // Le premier parce que la condition acceptait `useReducedMotion`, présent dans
+  // beams-background.tsx pour la pulsation de la surcouche : retirer le verrou de la
+  // BOUCLE ne changeait rien. Le second parce qu'elle se contentait de l'import —
+  // or ce fichier importe aussi `surChangementDeMouvement` du même module, si bien
+  // que la ligne `from "@/lib/mouvement"` survivait au retrait de l'appel.
+  //
+  // Un import n'arrête pas une boucle ; un appel, oui.
+  //
+  // Limite assumée : ceci prouve qu'un verrou est appelé dans le fichier, pas qu'il
+  // garde CETTE boucle-là. Le vérifier demanderait de suivre le flot de contrôle.
+  // Ce contrôle attrape la régression réaliste — on supprime l'appel en nettoyant —
+  // et il ne prétend pas à plus.
+  const consulte = /\bmouvementReduit\s*\(/.test(code);
 
   if (!consulte) {
     erreurs.push(
       `${fichier} fait tourner une boucle requestAnimationFrame sans consulter le réglage ` +
-        `« réduire les animations ». Aucune règle CSS de durée ne l'atteint : importe ` +
-        `mouvementReduit() depuis @/lib/mouvement, ou useReducedMotion de motion/react.`
+        `« réduire les animations ». Aucune règle CSS de durée ne l'atteint, et ` +
+        `useReducedMotion non plus : c'est un hook de rendu, la boucle tourne en dehors. ` +
+        `Importe mouvementReduit() depuis @/lib/mouvement et arrête la boucle avec.`
     );
   }
 }
