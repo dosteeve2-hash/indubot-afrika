@@ -46,6 +46,19 @@ const sections = [
   },
 ];
 
+/**
+ * La date de dernière mise à jour est une CONSTANTE, pas `new Date()`.
+ *
+ * La page affichait la date du jour, tous les jours : elle prétendait donc avoir été
+ * révisée aujourd'hui alors que son contenu n'a pas bougé depuis le 10 août 2026
+ * (commit 1b8ec42). Sur une politique de confidentialité, ce n'est pas un défaut
+ * d'affichage — c'est une affirmation fausse, et elle prive le lecteur du seul repère
+ * qui lui permette de savoir si les termes ont changé depuis sa dernière visite.
+ *
+ * À mettre à jour à la main quand le texte change, et seulement alors.
+ */
+const DERNIERE_MISE_A_JOUR = "10 août 2026";
+
 export default function PolitiqueConfidentialitePage() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -77,11 +90,7 @@ export default function PolitiqueConfidentialitePage() {
         </div>
 
         <p className="mt-12 font-mono text-xs text-text-3">
-          Dernière mise à jour : {new Date().toLocaleDateString("fr-FR", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          Dernière mise à jour : {DERNIERE_MISE_A_JOUR}
         </p>
       </main>
 
