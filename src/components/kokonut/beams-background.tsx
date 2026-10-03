@@ -10,9 +10,10 @@
  * @github: https://github.com/kokonut-labs/kokonutui
  */
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { mouvementReduit, surChangementDeMouvement } from "@/lib/mouvement";
 
 interface AnimatedGradientBackgroundProps {
   className?: string;
@@ -62,6 +63,7 @@ export default function BeamsBackground({
   const animationFrameRef = useRef<number>(0);
   const MINIMUM_BEAMS = 20;
   const isDarkModeRef = useRef<boolean>(true);
+  const reduit = useReducedMotion() === true;
 
   const opacityMap = {
     subtle: 0.7,
@@ -76,8 +78,20 @@ export default function BeamsBackground({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Largeur et hauteur du repere de DESSIN, en pixels CSS. Le tampon du canevas fait
+    // dpr fois cela, mais `ctx.scale(dpr, dpr)` ramene tout le dessin a cette echelle.
+    // C'est donc ici qu'il faut placer les faisceaux — et c'est ce qui manquait :
+    // `createBeam(canvas.width, …)` leur donnait des coordonnees du tampon dans un
+    // repere dpr fois plus petit. Sur un telephone a dpr = 3, l'essentiel du fond
+    // etait dessine hors de l'ecran, a droite et en dessous. Le defaut ne se voyait
+    // pas sur un ecran a dpr = 1, c'est-a-dire sur la machine ou on developpe.
+    const largeurDessin = () => window.innerWidth;
+    const hauteurDessin = () => window.innerHeight;
+
     const updateCanvasSize = () => {
       const dpr = window.devicePixelRatio || 1;
+      // Affecter canvas.width remet la transformation du contexte a l'identite :
+      // le ctx.scale qui suit ne s'accumule donc pas d'un redimensionnement a l'autre.
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       canvas.style.width = `${window.innerWidth}px`;
@@ -86,7 +100,7 @@ export default function BeamsBackground({
 
       const totalBeams = MINIMUM_BEAMS * 1.5;
       beamsRef.current = Array.from({ length: totalBeams }, () =>
-        createBeam(canvas.width, canvas.height, isDarkModeRef.current)
+        createBeam(largeurDessin(), hauteurDessin(), isDarkModeRef.current)
       );
     };
 
@@ -97,12 +111,12 @@ export default function BeamsBackground({
       if (!canvas) return beam;
 
       const column = index % 3;
-      const spacing = canvas.width / 3;
+      const spacing = largeurDessin() / 3;
 
       const hueBase = isDarkModeRef.current ? 190 : 210;
       const hueRange = isDarkModeRef.current ? 70 : 50;
 
-      beam.y = canvas.height + 100;
+      beam.y = hauteurDessin() + 100;
       beam.x =
         column * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
       beam.width = 100 + Math.random() * 100;
@@ -161,34 +175,61 @@ export default function BeamsBackground({
       ctx.restore();
     }
 
-    function animate() {
+    /** Une image. `avancer` a false : on dessine sans faire bouger les faisceaux. */
+    function dessiner(avancer: boolean) {
       if (!(canvas && ctx)) return;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, largeurDessin(), hauteurDessin());
       ctx.filter = "blur(35px)";
 
       const totalBeams = beamsRef.current.length;
       beamsRef.current.forEach((beam, index) => {
-        beam.y -= beam.speed;
-        beam.pulse += beam.pulseSpeed;
-
-        // Reset beam when it goes off screen
-        if (beam.y + beam.length < -100) {
-          resetBeam(beam, index, totalBeams);
+        if (avancer) {
+          beam.y -= beam.speed;
+          beam.pulse += beam.pulseSpeed;
+          if (beam.y + beam.length < -100) {
+            resetBeam(beam, index, totalBeams);
+          }
         }
-
         drawBeam(ctx, beam);
       });
+    }
 
+    function animate() {
+      dessiner(true);
       animationFrameRef.current = requestAnimationFrame(animate);
     }
 
-    animate();
+    function demarrer() {
+      if (animationFrameRef.current) return;
+      animate();
+    }
+
+    function arreter() {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = 0;
+      }
+      // Une seule image fixe plutot qu'un aplat : sous « reduire les animations », le
+      // fond garde son dessin, il cesse simplement de bouger. Supprimer l'image
+      // laisserait un rectangle vide a la place du decor de la page d'accueil.
+      dessiner(false);
+    }
+
+    if (mouvementReduit()) arreter();
+    else demarrer();
+
+    const desabonner = surChangementDeMouvement((reduit) => {
+      if (reduit) arreter();
+      else demarrer();
+    });
 
     return () => {
+      desabonner();
       window.removeEventListener("resize", updateCanvasSize);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = 0;
       }
     };
   }, [intensity]);
@@ -206,19 +247,20 @@ export default function BeamsBackground({
         style={{ filter: "blur(15px)" }}
       />
 
+      {/* Motion ne coupe pas de lui-meme une animation infinie : son reglage
+          automatique n'est actif que sous <MotionConfig reducedMotion="user">, absent
+          ici. Sans ce test, la pulsation continuait indefiniment. */}
       <motion.div
-        animate={{
-          opacity: [0.05, 0.15, 0.05],
-        }}
+        animate={reduit ? { opacity: 0.1 } : { opacity: [0.05, 0.15, 0.05] }}
         className="absolute inset-0 bg-navy/20"
         style={{
           backdropFilter: "blur(50px)",
         }}
-        transition={{
-          duration: 10,
-          ease: "easeInOut",
-          repeat: Number.POSITIVE_INFINITY,
-        }}
+        transition={
+          reduit
+            ? { duration: 0 }
+            : { duration: 10, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }
+        }
       />
 
       <div className="relative z-10 flex h-full w-full items-center justify-center">
