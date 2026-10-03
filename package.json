@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "check:date": "node scripts/check-date-usine.mjs",
+    "check:mouvement": "node scripts/check-mouvement.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },

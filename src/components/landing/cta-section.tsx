@@ -15,14 +15,13 @@ export default function CtaSection() {
         whileInView={{ opacity: 1, y: 0 }}
       >
         <p className="mb-3 font-mono text-xs uppercase tracking-widest text-gold">
-          Prêt à démarrer
+          Conçu pour les PME africaines
         </p>
         <h2 className="mx-auto mb-4 max-w-2xl font-serif text-3xl italic text-text md:text-4xl">
-          Digitalisez la gestion de votre industrie dès aujourd&apos;hui
+          Découvrez le MVP d&apos;Indubot Afrika
         </h2>
         <p className="mx-auto mb-8 max-w-xl text-text-2">
-          Rejoignez l&apos;écosystème Forge Afrika et pilotez votre production
-          avec des données fiables, en temps réel.
+          Échangeons sur vos besoins et sur la possibilité d&apos;un pilote.
         </p>
         <Link href="/dashboard">
           <GradientButton label="Accéder au tableau de bord" variant="gold" />

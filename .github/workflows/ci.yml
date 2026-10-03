@@ -31,6 +31,9 @@ jobs:
       - name: Date — stable quel que soit le fuseau
         run: npm run check:date
 
+      - name: Vérifier le respect du mouvement réduit
+        run: npm run check:mouvement
+
       - name: Tests
         run: npm test
 

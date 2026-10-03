@@ -33,16 +33,16 @@ export default function HeroContent() {
         className="font-serif text-5xl italic leading-tight text-text md:text-7xl"
         variants={item}
       >
-        La gestion industrielle,{" "}
-        <span className="text-gold">automatisée</span>
+        Le suivi industriel,{" "}
+        <span className="text-gold">en phase MVP</span>
       </motion.h1>
 
       <motion.p
         className="max-w-xl text-lg text-text-2"
         variants={item}
       >
-        Indubot Afrika pilote la production, les machines et les alertes de
-        vos usines en temps réel — pensé pour l&apos;industrie africaine.
+        Des vues de suivi de production, de machines et d&apos;alertes,
+        conçues pour les PME africaines. Pilote recherché.
       </motion.p>
 
       <motion.div
@@ -63,7 +63,7 @@ export default function HeroContent() {
           href="#case-study"
         >
           <PlayCircle className="h-4 w-4" />
-          Voir la démo
+          Découvrir le MVP
         </a>
       </motion.div>
     </motion.div>
