@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { TrendingUp } from "lucide-react";
 
 export default function CaseStudySection() {
   return (
@@ -15,37 +14,29 @@ export default function CaseStudySection() {
       >
         <div className="flex flex-col justify-center gap-4 md:col-span-3">
           <p className="font-mono text-xs uppercase tracking-widest text-cyan">
-            Étude de cas
+            Phase MVP
           </p>
           <h2 className="font-serif text-2xl italic text-text md:text-3xl">
-            Manufacture Textile du Faso réduit ses arrêts machines de 42%
+            Indubot Afrika recherche ses premiers sites pilotes
           </h2>
           <p className="text-sm leading-relaxed text-text-2">
-            Confrontée à des arrêts imprévus sur ses trois lignes de tissage,
-            l&apos;usine a déployé Indubot Afrika pour surveiller en temps réel
-            la température, la vibration et la cadence de chaque machine.
-            En six semaines, les alertes prédictives ont permis d&apos;anticiper
-            83% des pannes avant qu&apos;elles ne stoppent la production.
-          </p>
-          <blockquote className="border-l-2 border-gold pl-4 font-serif text-lg italic text-text">
-            &ldquo;On est passé d&apos;une maintenance réactive à une
-            maintenance prédictive. Le retour sur investissement a été
-            immédiat.&rdquo;
-          </blockquote>
-          <p className="font-mono text-xs uppercase tracking-wide text-text-3">
-            Aïcha Kaboré — Directrice de production
+            Le MVP comprend des vues de suivi de production, de machines et
+            d&apos;alertes. Nous cherchons des entreprises pour échanger sur
+            leurs besoins et les modalités d&apos;un pilote.
           </p>
         </div>
 
         <div className="flex flex-col justify-center gap-6 border-t border-border pt-8 md:col-span-2 md:border-l md:border-t-0 md:pl-10 md:pt-0">
           {[
-            { value: "−42%", label: "Arrêts machines non planifiés" },
-            { value: "+16 pts", label: "Rendement global (71% → 87%)" },
-            { value: "83%", label: "Pannes anticipées avant incident" },
+            { value: "MVP", label: "Suivi de production" },
+            { value: "MVP", label: "Monitoring machines" },
+            { value: "MVP", label: "Consultation des alertes" },
           ].map((stat) => (
             <div className="flex items-center gap-4" key={stat.label}>
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold/10 text-gold">
-                <TrendingUp className="h-5 w-5" />
+                <span aria-hidden="true" className="font-mono text-xs">
+                  MVP
+                </span>
               </div>
               <div>
                 <p className="font-mono text-2xl font-semibold text-text">

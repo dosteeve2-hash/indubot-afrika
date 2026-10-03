@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import MachinesRingChart from "@/components/charts/machines-ring-chart";
-import { machinesUtilisation } from "@/lib/indubot";
 
 export default function KpiPreview() {
   return (
@@ -15,33 +13,19 @@ export default function KpiPreview() {
           whileInView={{ opacity: 1, x: 0 }}
         >
           <p className="mb-3 font-mono text-xs uppercase tracking-widest text-cyan">
-            Vue temps réel
+            MVP
           </p>
           <h2 className="mb-4 font-serif text-3xl italic text-text md:text-4xl">
-            Le taux d&apos;utilisation de vos machines, d&apos;un coup
-            d&apos;œil
+            Des vues de suivi pour l&apos;industrie
           </h2>
           <p className="mb-6 max-w-md text-text-2">
-            Chaque ligne de production suivie individuellement, avec des
-            alertes automatiques dès qu&apos;une machine sort de sa plage de
-            fonctionnement optimale.
+            Le MVP présente des vues de production, de machines et d&apos;alertes.
+            Nous recherchons des sites pilotes pour valider les besoins.
           </p>
-          <ul className="flex flex-col gap-2">
-            {machinesUtilisation.map((m) => (
-              <li
-                className="flex items-center justify-between border-b border-border py-2 font-mono text-sm"
-                key={m.label}
-              >
-                <span className="flex items-center gap-2 text-text-2">
-                  <span
-                    className="h-2 w-2 rounded-full"
-                    style={{ backgroundColor: m.color }}
-                  />
-                  {m.label}
-                </span>
-                <span className="text-text">{m.value}%</span>
-              </li>
-            ))}
+          <ul className="flex flex-col gap-2 border-t border-border pt-4 font-mono text-sm text-text-2">
+            <li>Suivi de production</li>
+            <li>Monitoring machines</li>
+            <li>Consultation des alertes</li>
           </ul>
         </motion.div>
         <motion.div
@@ -51,7 +35,12 @@ export default function KpiPreview() {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, scale: 1 }}
         >
-          <MachinesRingChart />
+          <div className="flex min-h-72 w-full max-w-md flex-col items-center justify-center gap-3 rounded-2xl border border-border bg-navy-2/60 p-8 text-center backdrop-blur-sm">
+            <span className="font-serif text-4xl italic text-gold">MVP</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-text-3">
+              Pilote recherché
+            </span>
+          </div>
         </motion.div>
       </div>
     </section>

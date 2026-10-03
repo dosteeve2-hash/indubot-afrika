@@ -6,7 +6,6 @@ import HeroContent from "@/components/landing/hero-content";
 import FeatureGrid from "@/components/landing/feature-grid";
 import KpiPreview from "@/components/landing/kpi-preview";
 import CaseStudySection from "@/components/landing/case-study-section";
-import TestimonialsSection from "@/components/landing/testimonials-section";
 import TeamSection from "@/components/landing/team-section";
 import FaqSection from "@/components/landing/faq-section";
 import ContactSection from "@/components/landing/contact-section";
@@ -57,8 +56,6 @@ export default function Home() {
       <KpiPreview />
 
       <CaseStudySection />
-
-      <TestimonialsSection />
 
       <TeamSection />
 
