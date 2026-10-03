@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { Clock, MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { submitContactForm, type ContactFormState } from "@/app/actions/contact";
 import { mapsDirectionsUrl, siteConfig } from "@/lib/site-config";
@@ -24,8 +24,7 @@ export default function ContactSection() {
           Parlons de votre production
         </h2>
         <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-green/30 bg-green/10 px-4 py-1.5 font-mono text-xs text-green">
-          <Clock className="h-3.5 w-3.5" />
-          {siteConfig.responseTimePromise}
+          MVP — pilote recherché
         </div>
       </div>
 

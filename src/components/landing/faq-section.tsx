@@ -5,29 +5,24 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Combien de temps prend la mise en place d'Indubot Afrika ?",
+    question: "Quel est le statut d'Indubot Afrika ?",
     answer:
-      "Le déploiement initial (connexion de vos lignes de production et configuration des alertes) prend généralement entre 5 et 10 jours ouvrés, selon la taille de votre parc industriel.",
+      "Indubot Afrika est en phase MVP. Nous recherchons des sites pilotes.",
   },
   {
-    question: "Indubot Afrika fonctionne-t-il avec du matériel déjà en place ?",
+    question: "Quelles vues sont présentées dans le MVP ?",
     answer:
-      "Oui. Indubot Afrika s'intègre aux capteurs et automates existants (API, protocoles industriels standards) sans nécessiter le remplacement de vos équipements.",
+      "Le MVP comprend des vues de suivi de production, de machines et d'alertes.",
   },
   {
-    question: "Mes données de production sont-elles sécurisées ?",
+    question: "À qui s'adresse Indubot Afrika ?",
     answer:
-      "Toutes les données transitent chiffrées, sont hébergées sur une infrastructure conforme aux standards de sécurité actuels, et l'accès est protégé par authentification et contrôle des rôles.",
+      "Le produit est conçu pour les PME africaines du secteur industriel.",
   },
   {
-    question: "Puis-je essayer Indubot Afrika avant de m'engager ?",
+    question: "Comment échanger sur un pilote ?",
     answer:
-      "Oui, une démonstration personnalisée avec vos propres données de production est proposée avant toute souscription. Contactez-nous pour la programmer.",
-  },
-  {
-    question: "Quel support est proposé après la mise en service ?",
-    answer:
-      "Une équipe dédiée basée à Ouagadougou assure le support technique et répond à toute demande en moins de 24h, avec des rapports de suivi réguliers.",
+      "Utilisez le formulaire de contact pour nous présenter votre contexte et vos besoins.",
   },
 ];
 
