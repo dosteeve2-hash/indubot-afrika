@@ -53,13 +53,11 @@ const localBusinessJsonLd = {
   description: siteConfig.description,
   url: siteConfig.url,
   email: siteConfig.email,
-  telephone: siteConfig.phone,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
     addressLocality: siteConfig.address.locality,
     addressRegion: siteConfig.address.region,
-    postalCode: siteConfig.address.postalCode,
     addressCountry: siteConfig.address.country,
   },
 };

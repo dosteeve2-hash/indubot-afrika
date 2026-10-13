@@ -3,14 +3,12 @@ export const siteConfig = {
   ecosystem: "Forge Afrika",
   url: "https://indubot-afrika.vercel.app",
   description:
-    "Indubot Afrika est le logiciel de gestion automatique d'industries de l'écosystème Forge Afrika : production, machines, alertes et rapports en temps réel.",
+    "Indubot Afrika est un logiciel de gestion d'industries en développement (MVP) dans l'écosystème Forge Afrika : suivi de production, machines et alertes. Sites pilotes recherchés.",
   email: "contact@forge-afrika.com",
-  phone: "+226 25 00 00 00",
   address: {
     street: "Zone Industrielle de Kossodo",
     locality: "Ouagadougou",
     region: "Centre",
-    postalCode: "01 BP 0000",
     country: "BF",
     countryName: "Burkina Faso",
   },

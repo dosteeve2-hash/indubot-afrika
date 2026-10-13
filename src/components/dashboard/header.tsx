@@ -17,8 +17,8 @@ export default function DashboardHeader() {
         <p className="text-sm text-text-2 capitalize">{today}</p>
       </div>
       <div className="flex items-center gap-2 self-start rounded-full border border-border-2 bg-navy-2/60 px-3 py-1.5 font-mono text-xs text-text-2 md:self-auto">
-        <span className="h-1.5 w-1.5 rounded-full bg-green" />
-        Tous systèmes opérationnels
+        <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+        Aperçu · données d&apos;exemple
       </div>
     </header>
   );
