@@ -20,7 +20,7 @@
 
 Indubot Afrika est le logiciel de gestion d'industries de l'écosystème **Forge Afrika** : suivi de production, état des machines, alertes et rapports, pour des unités industrielles d'Afrique de l'Ouest.
 
-Le dépôt contient aujourd'hui la **vitrine pré-lancement** et une **démonstration du tableau de bord** : la landing page de conversion complète (offre, cas client, témoignages, FAQ, contact) et le module « Vue d'ensemble » avec ses graphiques.
+Le dépôt contient aujourd'hui la **vitrine pré-lancement** et une **démonstration du tableau de bord** : la landing page (présentation du MVP, FAQ, contact) et le module « Vue d'ensemble » avec ses graphiques.
 
 > **État actuel.** Les données du tableau de bord sont générées côté client pour la démonstration — il n'y a pas encore de connexion à un automate ou à une base de production. Quatre modules sur cinq sont affichés comme **à venir**.
 

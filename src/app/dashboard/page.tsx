@@ -13,7 +13,7 @@ import { alertes, kpis } from "@/lib/indubot";
 export const metadata: Metadata = {
   title: "Tableau de bord | Indubot Afrika",
   description:
-    "Suivez en temps réel la production, l'utilisation des machines et les alertes de votre usine sur le tableau de bord Indubot Afrika.",
+    "Aperçu du tableau de bord Indubot Afrika : production, utilisation des machines et alertes, avec des données d'exemple.",
   openGraph: { images: ["/opengraph-image"] },
   twitter: { card: "summary_large_image", images: ["/opengraph-image"] },
 };
@@ -27,6 +27,14 @@ export default function DashboardPage() {
         <DashboardHeader />
 
         <main className="flex flex-1 flex-col gap-6 px-6 py-8 md:px-10">
+          <p
+            className="rounded-xl border border-border-2 bg-navy-2/60 px-4 py-3 text-xs text-text-2"
+            role="note"
+          >
+            <strong className="text-gold">Données d&apos;exemple.</strong> Les chiffres, machines
+            et alertes affichés ici sont fictifs : Indubot Afrika n&apos;est pas encore branché à
+            une usine réelle. Nous recherchons des sites pilotes.
+          </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {kpis.map((kpi, index) => (
               <KpiCard index={index} key={kpi.label} kpi={kpi} />
