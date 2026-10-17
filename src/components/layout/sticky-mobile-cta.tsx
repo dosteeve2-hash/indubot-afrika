@@ -13,9 +13,9 @@ export default function StickyMobileCta() {
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border-2 bg-navy/95 px-4 py-3 backdrop-blur-md lg:hidden">
       <Link
         className="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-gold font-mono text-sm font-medium text-navy transition-colors active:bg-gold-2"
-        href="/dashboard"
+        href="/#contact"
       >
-        Ouvrir le tableau de bord
+        Devenir site pilote
         <ArrowRight className="h-4 w-4" />
       </Link>
     </div>

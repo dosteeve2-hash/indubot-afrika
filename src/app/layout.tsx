@@ -27,12 +27,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Indubot Afrika — Gestion Industrielle Intelligente",
+    default: "Indubot Afrika — Intelligence embarquée pour machines d'usine",
     template: "%s",
   },
   description: siteConfig.description,
   openGraph: {
-    title: "Indubot Afrika — Gestion Industrielle Intelligente",
+    title: "Indubot Afrika — Intelligence embarquée pour machines d'usine",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Indubot Afrika — Gestion Industrielle Intelligente",
+    title: "Indubot Afrika — Intelligence embarquée pour machines d'usine",
     description: siteConfig.description,
   },
 };
