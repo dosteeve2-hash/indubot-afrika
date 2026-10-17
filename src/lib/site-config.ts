@@ -3,7 +3,7 @@ export const siteConfig = {
   ecosystem: "Forge Afrika",
   url: "https://indubot-afrika.vercel.app",
   description:
-    "Indubot Afrika est un logiciel de gestion d'industries en développement (MVP) dans l'écosystème Forge Afrika : suivi de production, machines et alertes. Sites pilotes recherchés.",
+    "Indubot Afrika est la technologie embarquée dans les machines et robots d'usine (algorithmes de régulation, lecture et commande des machines), connectée à MillTrack. En développement dans l'écosystème Forge Afrika. Sites pilotes recherchés.",
   email: "contact@forge-afrika.com",
   address: {
     street: "Zone Industrielle de Kossodo",
