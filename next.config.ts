@@ -11,10 +11,6 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "DENY" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           {
-            key: "Content-Security-Policy",
-            value: "frame-src https://forge-marketing-video.vercel.app",
-          },
-          {
             key: "Referrer-Policy",
             value: "strict-origin-when-cross-origin",
           },

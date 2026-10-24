@@ -3,7 +3,6 @@ import Link from "next/link";
 import SignInButton from "@/components/auth/sign-in-button";
 import BeamsBackground from "@/components/kokonut/beams-background";
 import HeroContent from "@/components/landing/hero-content";
-import ProjectVideo from "@/components/ProjectVideo";
 import FeatureGrid from "@/components/landing/feature-grid";
 import KpiPreview from "@/components/landing/kpi-preview";
 import CaseStudySection from "@/components/landing/case-study-section";
@@ -41,20 +40,6 @@ export default function Home() {
       <BeamsBackground intensity="subtle">
         <HeroContent />
       </BeamsBackground>
-
-      <section className="mx-auto w-full max-w-3xl px-6 py-16 text-center" id="video">
-        <h2 className="mb-6 font-serif text-3xl italic text-text md:text-4xl">
-          Indubot en 1 minute
-        </h2>
-        <ProjectVideo slug="indubot" lang="fr" title="Vidéo de présentation d'Indubot" />
-        <a
-          className="mt-8 inline-flex h-12 items-center gap-2 rounded-lg bg-gold px-6 font-mono text-sm font-medium text-navy transition-colors hover:bg-gold-2"
-          href="#contact"
-        >
-          Devenir site pilote
-          <ArrowRight className="h-4 w-4" />
-        </a>
-      </section>
 
       <section className="mx-auto w-full max-w-7xl px-6 py-24">
         <div className="mb-12 max-w-2xl">
