@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "motion/react";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const container: Variants = {
   hidden: {},
@@ -56,13 +56,6 @@ export default function HeroContent() {
         >
           Devenir site pilote
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </a>
-        <a
-          className="inline-flex h-12 items-center gap-2 rounded-lg border border-border-2 px-6 font-mono text-sm text-text-2 transition-colors hover:border-cyan hover:text-cyan"
-          href="#video"
-        >
-          <PlayCircle className="h-4 w-4" />
-          Voir la vidéo
         </a>
       </motion.div>
     </motion.div>
