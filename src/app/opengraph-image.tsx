@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt =
-  "Indubot Afrika — logiciel de gestion industrielle de l'écosystème Forge Afrika";
+  "Indubot Afrika, vitrine de pré-lancement et démonstration en développement";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -16,9 +16,9 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0A1628",
+          backgroundColor: "#14161F",
           backgroundImage:
-            "radial-gradient(circle at 25% 15%, rgba(212,175,55,0.16), transparent 45%), radial-gradient(circle at 80% 85%, rgba(0,188,212,0.14), transparent 45%)",
+            "radial-gradient(circle at 78% 48%, rgba(109,63,240,0.18), transparent 38%)",
         }}
       >
         <div
@@ -26,15 +26,15 @@ export default function OpengraphImage() {
             display: "flex",
             alignItems: "center",
             gap: 16,
-            marginBottom: 28,
+            marginBottom: 22,
           }}
         >
           <span
             style={{
-              fontSize: 30,
+              fontSize: 22,
               fontWeight: 600,
-              letterSpacing: 6,
-              color: "#00BCD4",
+              letterSpacing: 3,
+              color: "#B7A5FF",
               textTransform: "uppercase",
             }}
           >
@@ -44,10 +44,9 @@ export default function OpengraphImage() {
         <div
           style={{
             display: "flex",
-            fontSize: 108,
-            fontWeight: 700,
-            color: "#D4AF37",
-            fontStyle: "italic",
+            fontSize: 92,
+            fontWeight: 600,
+            color: "#F0EFF7",
           }}
         >
           Indubot Afrika
@@ -62,16 +61,15 @@ export default function OpengraphImage() {
             textAlign: "center",
           }}
         >
-          La gestion industrielle, automatisée
+          Sachez en temps réel quelle machine s&apos;arrête, et pourquoi.
         </div>
         <div
           style={{
             display: "flex",
-            marginTop: 48,
-            width: 140,
-            height: 4,
-            backgroundColor: "#D4AF37",
-            borderRadius: 2,
+            marginTop: 44,
+            width: 184,
+            height: 3,
+            backgroundColor: "#6D3FF0",
           }}
         />
       </div>

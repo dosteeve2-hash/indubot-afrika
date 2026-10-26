@@ -3,8 +3,8 @@ export const siteConfig = {
   ecosystem: "Forge Afrika",
   url: "https://indubot-afrika.vercel.app",
   description:
-    "Indubot Afrika est la technologie embarquée dans les machines et robots d'usine (algorithmes de régulation, lecture et commande des machines), connectée à MillTrack. En développement dans l'écosystème Forge Afrika. Sites pilotes recherchés.",
-  email: "contact@forge-afrika.com",
+    "Indubot Afrika présente une vitrine pré-lancement et une démonstration de son module Vue d’ensemble. Le produit est en développement et les données de démonstration sont fictives.",
+  email: "docompaore2@gmail.com",
   address: {
     street: "Zone Industrielle de Kossodo",
     locality: "Ouagadougou",
@@ -12,7 +12,6 @@ export const siteConfig = {
     country: "BF",
     countryName: "Burkina Faso",
   },
-  responseTimePromise: "Réponse en moins de 24h",
 } as const;
 
 export const siteNavLinks = [

@@ -31,9 +31,9 @@ export default function DashboardPage() {
             className="rounded-xl border border-border-2 bg-navy-2/60 px-4 py-3 text-xs text-text-2"
             role="note"
           >
-            <strong className="text-gold">Données d&apos;exemple.</strong> Les chiffres, machines
-            et alertes affichés ici sont fictifs : Indubot Afrika n&apos;est pas encore branché à
-            une usine réelle. Nous recherchons des sites pilotes.
+            <strong className="text-gold">Démonstration.</strong> Toutes les
+            valeurs, machines et alertes de cette page sont fictives. Aucune
+            usine ni aucun automate ne sont connectés.
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {kpis.map((kpi, index) => (

@@ -1,90 +1,105 @@
 import type { Metadata } from "next";
-import Breadcrumbs from "@/components/layout/breadcrumbs";
+import SiteHeader from "@/components/layout/site-header";
 import SiteFooter from "@/components/layout/site-footer";
-import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité | Indubot Afrika",
+  title: "Confidentialité | Indubot Afrika",
   description:
-    "Comment Indubot Afrika collecte, utilise et protège les données de ses clients industriels et visiteurs du site.",
+    "Informations sur les données du site public et de la démonstration Indubot Afrika.",
   openGraph: { images: ["/opengraph-image"] },
   twitter: { card: "summary_large_image", images: ["/opengraph-image"] },
 };
 
 const sections = [
   {
-    title: "1. Responsable du traitement",
-    body: `${siteConfig.name}, exploité par l'écosystème ${siteConfig.ecosystem}, ${siteConfig.address.street}, ${siteConfig.address.locality}, ${siteConfig.address.countryName}. Contact : ${siteConfig.email}.`,
+    title: "Qui contacter",
+    body: (
+      <>
+        Indubot Afrika est le nom du produit présenté sur ce site. Pour toute
+        question sur la confidentialité ou une demande relative à vos données,
+        écrivez à{" "}
+        <a href="mailto:docompaore2@gmail.com">docompaore2@gmail.com</a>.
+        Le dépôt ne précise pas d&apos;entité juridique distincte.
+      </>
+    ),
   },
   {
-    title: "2. Données collectées",
-    body: "Nous collectons les données que vous nous transmettez via le formulaire de contact (nom, email, entreprise, message), les données de compte lors de la connexion (email, identifiant du fournisseur d'authentification), et des données d'usage anonymisées à des fins d'analyse d'audience.",
+    title: "Données de démonstration",
+    body: (
+      <>
+        Les chiffres, machines et événements affichés dans le tableau de bord
+        sont des exemples fictifs. Ils ne proviennent pas d&apos;une usine et
+        Indubot Afrika n&apos;est pas connecté à un automate.
+      </>
+    ),
   },
   {
-    title: "3. Finalités du traitement",
-    body: "Ces données sont utilisées pour répondre à vos demandes, fournir l'accès au tableau de bord Indubot Afrika, assurer la sécurité de la plateforme, et améliorer nos services.",
+    title: "Contact par e-mail",
+    body: (
+      <>
+        Le lien de contact ouvre votre application de messagerie et adresse
+        votre message à docompaore2@gmail.com. L&apos;envoi et le traitement de
+        ce message dépendent ensuite de votre fournisseur de messagerie et du
+        traitement effectué par son destinataire.
+      </>
+    ),
   },
   {
-    title: "4. Base légale",
-    body: "Le traitement repose sur votre consentement (formulaire de contact), l'exécution d'un contrat (accès au tableau de bord) et notre intérêt légitime à améliorer le produit.",
+    title: "Connexion",
+    body: (
+      <>
+        Le code prévoit une connexion via Google ou GitHub avec Better Auth.
+        Cette fonction dépend de la configuration des fournisseurs
+        d&apos;authentification. Une session configurée dure au maximum sept
+        jours avant son expiration, selon les paramètres présents dans le
+        dépôt.
+      </>
+    ),
   },
   {
-    title: "5. Conservation des données",
-    body: "Les données de contact sont conservées 24 mois maximum après le dernier échange. Les données de compte sont conservées pour la durée de la relation contractuelle.",
+    title: "Mesure d’audience",
+    body: (
+      <>
+        Google Analytics est chargé uniquement si une clé de mesure est
+        configurée pour le site. Les paramètres de conservation et de
+        traitement dépendent du compte Analytics utilisé; le code du dépôt ne
+        permet pas de confirmer ces réglages.
+      </>
+    ),
   },
   {
-    title: "6. Partage des données",
-    body: "Vos données ne sont jamais vendues. Elles peuvent être partagées avec nos sous-traitants techniques (hébergement, authentification, mesure d'audience) dans le strict cadre de la fourniture du service.",
-  },
-  {
-    title: "7. Vos droits",
-    body: `Vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous à ${siteConfig.email}.`,
-  },
-  {
-    title: "8. Cookies et mesure d'audience",
-    body: "Le site peut utiliser des cookies de mesure d'audience (Google Analytics) afin de comprendre l'utilisation du site. Ces données sont anonymisées et ne permettent pas de vous identifier personnellement.",
+    title: "Demandes relatives à vos données",
+    body: (
+      <>
+        Pour demander l&apos;accès à des données vous concernant, leur
+        rectification ou leur suppression, contactez-nous par e-mail à{" "}
+        <a href="mailto:docompaore2@gmail.com">docompaore2@gmail.com</a>.
+      </>
+    ),
   },
 ];
 
 export default function PolitiqueConfidentialitePage() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Breadcrumbs
-        items={[
-          { label: "Politique de confidentialité", href: "/politique-confidentialite" },
-        ]}
-      />
-
-      <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
-        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-cyan">
-          Confidentialité
-        </p>
-        <h1 className="mb-8 font-serif text-3xl italic text-text md:text-4xl">
-          Politique de confidentialité
-        </h1>
-
-        <div className="flex flex-col gap-8">
+    <div className="page-shell">
+      <SiteHeader />
+      <main className="page-content">
+        <div className="page-heading">
+          <h1>Politique de confidentialité</h1>
+          <p>
+            Cette page décrit ce que le code du site permet de confirmer. Elle
+            distingue la démonstration du fonctionnement futur du produit.
+          </p>
+        </div>
+        <div className="legal-copy">
           {sections.map((section) => (
-            <div key={section.title}>
-              <h2 className="mb-2 font-serif text-lg italic text-gold">
-                {section.title}
-              </h2>
-              <p className="text-sm leading-relaxed text-text-2">
-                {section.body}
-              </p>
-            </div>
+            <section key={section.title}>
+              <h2>{section.title}</h2>
+              <p>{section.body}</p>
+            </section>
           ))}
         </div>
-
-        <p className="mt-12 font-mono text-xs text-text-3">
-          Dernière mise à jour : {new Date().toLocaleDateString("fr-FR", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
       </main>
-
       <SiteFooter />
     </div>
   );

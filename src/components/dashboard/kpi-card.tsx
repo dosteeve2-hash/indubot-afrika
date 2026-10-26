@@ -27,7 +27,7 @@ export default function KpiCard({ kpi, index }: { kpi: Kpi; index: number }) {
       <div
         className={cn(
           "mt-3 inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-xs",
-          positive ? "bg-green/10 text-green" : "bg-red/10 text-red"
+          positive ? "bg-gold/10 text-gold-2" : "bg-red/10 text-red"
         )}
       >
         {positive ? (
