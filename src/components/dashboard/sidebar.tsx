@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   AlertTriangle,
   Cpu,
@@ -25,7 +26,12 @@ export default function Sidebar() {
   return (
     <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-navy-2/40 px-4 py-6 lg:flex">
       <div className="mb-8 flex items-center gap-2 px-2">
-        <span className="font-serif text-xl italic text-gold">Indubot</span>
+        <Image
+          alt="Indubot"
+          height={52}
+          src="/logo-sombre.svg"
+          width={154}
+        />
         <span className="font-mono text-xs uppercase tracking-widest text-text-3">
           Afrika
         </span>

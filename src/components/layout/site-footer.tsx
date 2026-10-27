@@ -1,40 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
-import { siteConfig, siteNavLinks } from "@/lib/site-config";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-border px-6 py-10">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 md:flex-row md:items-start md:justify-between">
-        <div>
-          <span className="font-serif text-lg italic text-gold">
-            {siteConfig.name}
-          </span>
-          <p className="mt-1 font-mono text-xs text-text-3">
-            Écosystème {siteConfig.ecosystem} — {new Date().getFullYear()}
-          </p>
-          <p className="mt-3 max-w-xs text-xs text-text-2">
-            {siteConfig.address.street}, {siteConfig.address.locality},{" "}
-            {siteConfig.address.countryName}
-          </p>
+    <footer className="site-footer">
+      <div className="site-footer-inner">
+        <div className="footer-brand">
+          <Link aria-label="Indubot Afrika, accueil" className="footer-brand-link" href="/">
+            <Image alt="" aria-hidden="true" height={32} src="/mark-clair.svg" width={32} />
+            <span className="brand-word">indubot</span>
+          </Link>
+          <p>Le logiciel qui vit dans la machine.</p>
         </div>
-
-        <nav
-          aria-label="Liens du site"
-          className="flex flex-col gap-2 font-mono text-xs uppercase tracking-wide text-text-2 md:items-end"
-        >
-          {siteNavLinks.map((link) => (
-            <Link
-              className="transition-colors hover:text-gold"
-              href={link.href}
-              key={link.href}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <a className="transition-colors hover:text-gold" href={`mailto:${siteConfig.email}`}>
-            {siteConfig.email}
-          </a>
+        <nav aria-label="Liens du pied de page" className="footer-links">
+          <Link href="/tarifs">Tarifs</Link>
+          <Link href="/politique-confidentialite">Confidentialité</Link>
+          <a href="mailto:docompaore2@gmail.com">docompaore2@gmail.com</a>
         </nav>
+        <p className="footer-status">
+          Démonstration en développement. Aucune connexion à un automate.
+        </p>
       </div>
     </footer>
   );

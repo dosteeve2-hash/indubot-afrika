@@ -55,7 +55,7 @@ export const energieData: EnergiePoint[] = [
 export const machinesUtilisation: MachineUtilisation[] = [
   { label: "Ligne A", value: 92, maxValue: 100, color: "var(--gold)" },
   { label: "Ligne B", value: 76, maxValue: 100, color: "var(--cyan)" },
-  { label: "Ligne C", value: 58, maxValue: 100, color: "var(--green)" },
+  { label: "Ligne C", value: 58, maxValue: 100, color: "var(--chart-3)" },
   { label: "Ligne D", value: 34, maxValue: 100, color: "var(--text-3)" },
 ];
 

@@ -9,16 +9,15 @@ export default function DashboardHeader() {
   });
 
   return (
-    <header className="flex flex-col gap-1 border-b border-border px-6 py-6 md:flex-row md:items-center md:justify-between md:px-10">
+    <header className="sticky top-0 z-10 flex flex-col gap-1 border-b border-border bg-navy/95 px-6 py-6 backdrop-blur md:flex-row md:items-center md:justify-between md:px-10">
       <div>
         <h1 className="font-serif text-2xl italic text-text md:text-3xl">
           Tableau de bord industriel
         </h1>
         <p className="text-sm text-text-2 capitalize">{today}</p>
       </div>
-      <div className="flex items-center gap-2 self-start rounded-full border border-border-2 bg-navy-2/60 px-3 py-1.5 font-mono text-xs text-text-2 md:self-auto">
-        <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-        Aperçu · données d&apos;exemple
+      <div className="flex min-h-11 items-center gap-2 self-start rounded-md border border-border-2 bg-navy-2/60 px-3 py-1.5 font-mono text-xs text-text-2 md:self-auto">
+        Démonstration · données fictives
       </div>
     </header>
   );
