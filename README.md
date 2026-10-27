@@ -4,13 +4,13 @@
 
 # 🏭 Indubot Afrika
 
-*Gestion industrielle en temps réel — production, machines, alertes et rapports*
+*Projet en développement : gestion industrielle (production, machines, alertes, rapports). Aujourd'hui : vitrine et démonstration d'un tableau de bord à données simulées.*
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![visx](https://img.shields.io/badge/visx-charts-FF6B6B?style=flat-square)](https://airbnb.io/visx/)
-[![CI](https://img.shields.io/badge/CI-lint%20·%20build-22c55e?style=flat-square&logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
+[![CI](https://img.shields.io/badge/CI-lint%20·%20tests%20·%20build-22c55e?style=flat-square&logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
 
 **[🌐 Site en ligne](https://indubot-afrika.vercel.app)**
 
@@ -48,7 +48,7 @@ Production journalière, taux d'uptime, alertes actives et rendement global, ave
 
 | Module | État |
 |---|---|
-| Vue d'ensemble | ✅ |
+| Vue d'ensemble | Démonstration (données générées côté client, aucune machine connectée) |
 | Production | 🚧 à venir |
 | Machines | 🚧 à venir |
 | Alertes | 🚧 à venir |
@@ -67,7 +67,7 @@ Styles      : Tailwind CSS v4
 Graphiques  : visx (@visx/shape, scale, axis, tooltip…)
 Animations  : Framer Motion, @number-flow/react
 Auth        : Better Auth (Google, GitHub)
-Données     : Supabase
+Données     : Supabase (client présent, pas encore utilisé par les écrans)
 Analytics   : Google Analytics
 ```
 
@@ -88,7 +88,7 @@ Ouvre [http://localhost:3000](http://localhost:3000). La vitrine et le tableau d
 
 ### Variables d'environnement
 
-Nécessaires uniquement pour l'authentification, la persistance et les statistiques :
+Nécessaires uniquement pour la connexion (Google/GitHub) et les statistiques. Il n'y a pas encore de persistance de données de production :
 
 ```bash
 cp .env.local.example .env.local
@@ -108,6 +108,8 @@ cp .env.local.example .env.local
 | `npm run dev` | Serveur de développement |
 | `npm run build` | Build de production |
 | `npm run lint` | ESLint |
+| `npm test` | Tests Vitest |
+| `npm run check:mouvement` | Vérification des animations (`scripts/check-mouvement.mjs`) |
 
 ---
 
