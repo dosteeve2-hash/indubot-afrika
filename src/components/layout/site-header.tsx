@@ -7,13 +7,8 @@ export default function SiteHeader() {
     <header className="site-header">
       <div className="site-header-inner">
         <Link aria-label="Indubot Afrika, accueil" className="brand-link" href="/">
-          <Image
-            alt="Indubot"
-            height={48}
-            priority
-            src="/logo-sombre.svg"
-            width={143}
-          />
+          <Image alt="" aria-hidden="true" height={36} priority src="/mark-clair.svg" width={36} />
+          <span className="brand-word">indubot</span>
           <span className="brand-afrika">Afrika</span>
         </Link>
 

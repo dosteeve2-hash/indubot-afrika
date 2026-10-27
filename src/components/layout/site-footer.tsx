@@ -6,8 +6,9 @@ export default function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer-inner">
         <div className="footer-brand">
-          <Link aria-label="Indubot Afrika, accueil" href="/">
-            <Image alt="Indubot" height={42} src="/logo-sombre.svg" width={125} />
+          <Link aria-label="Indubot Afrika, accueil" className="footer-brand-link" href="/">
+            <Image alt="" aria-hidden="true" height={32} src="/mark-clair.svg" width={32} />
+            <span className="brand-word">indubot</span>
           </Link>
           <p>Le logiciel qui vit dans la machine.</p>
         </div>

@@ -166,9 +166,24 @@ summary {
   width: auto;
 }
 
+.brand-word {
+  color: #e9e6ff;
+  font-family: var(--font-chakra-petch), sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.footer-brand-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+}
+
 .brand-afrika {
-  align-self: flex-end;
-  margin: 0 0 11px -4px;
+  align-self: center;
+  margin: 6px 0 0 2px;
   color: var(--text-2);
   font-family: var(--font-jetbrains), monospace;
   font-size: 10px;
@@ -951,12 +966,16 @@ summary {
   }
 
   .brand-link img {
-    width: 124px;
-    height: auto;
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-word {
+    font-size: 21px;
   }
 
   .brand-afrika {
-    margin-bottom: 9px;
+    margin: 5px 0 0 0;
     font-size: 9px;
   }
 
